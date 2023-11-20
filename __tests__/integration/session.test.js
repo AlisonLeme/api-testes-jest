@@ -80,3 +80,23 @@ describe("Authentication", () => {
     expect(response.status).toBe(401);
   });
 });
+
+describe("Entradas no banco", () => {
+  beforeEach(async () => {
+    await truncate();
+  });
+
+  it("Entrada tabela disciplinas", async () => {
+    const discipline = await factory.create("Discipline", {
+      name: "DevOps"
+    });
+
+    const response = await request(app)
+      .post("/disciplines")
+      .send({
+        name: discipline.name
+      });
+
+    expect(response.status).toBe(201);
+  });
+});
