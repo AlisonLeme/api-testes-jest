@@ -99,4 +99,18 @@ describe("Entradas no banco", () => {
 
     expect(response.status).toBe(201);
   });
+
+  it("Entrada tabela disciplinas", async () => {
+    const discipline = await factory.create("Discipline", {
+      name: "DevOps"
+    });
+
+    const response = await request(app)
+      .post("/disciplines")
+      .send({
+        name: discipline.email
+      });
+
+    expect(response.status).toBe(501);
+  });
 });

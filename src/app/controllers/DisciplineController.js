@@ -21,7 +21,7 @@ class DisciplineController {
       res.status(201).json(newDiscipline);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: "Erro ao criar disciplina" });
+      res.status(501).json({ error: "Erro ao criar disciplina" });
     }
   }
 }
